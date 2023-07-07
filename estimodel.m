@@ -1,0 +1,9 @@
+function moistest=estimodel(thetf,mwant,mwantd,kw,thet2g2,riwant,rainwd1,rainwd2,rainwd3,rainwd4,rainwd5,rainwd6,tewant,ts)
+moistest(1)=mwantd(1); %moisture initial condition
+moistest(2)=mwant(1); %moisture initial condition
+for k=2:1:kw-1
+    moistest(k+1)=moistest(k) + ts*(thet2g2(1)*riwant(k) + thet2g2(2) *rainwd1(k) ...
+    + thet2g2(3) *rainwd2(k) + thet2g2(4) *rainwd3(k) + thet2g2(5) *rainwd4(k) + thet2g2(6) *rainwd5(k)...
+    + thet2g2(7) *rainwd6(k) - thet2g2(8)*moistest(k) - thet2g2(9)*moistest(k-1) + thet2g2(10)*tewant(k)...
+    + thetf);
+end
